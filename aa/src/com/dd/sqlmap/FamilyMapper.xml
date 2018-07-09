@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dd.dao.FamilyMapper" >
+  <resultMap id="BaseResultMap" type="com.dd.domain.Family" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="CHAR" />
+    <result column="age" property="age" jdbcType="VARCHAR" />
+    <result column="del" property="del" jdbcType="INTEGER" />
+    <result column="date" property="date" jdbcType="TIMESTAMP" />
+    <result column="flag" property="flag" jdbcType="VARCHAR" />
+    <result column="bz" property="bz" jdbcType="VARCHAR" />
+    <result column="eid" property="eid" jdbcType="VARCHAR" />
+    <result column="jobdate" property="jobdate" jdbcType="VARCHAR" />
+    <result column="birthday" property="birthday" jdbcType="VARCHAR" />
+    <result column="empid" property="empid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, username, sex, age, del, date, flag, bz, eid, jobdate, birthday, empid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tab_family
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tab_family
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.dd.domain.Family" >
+    insert into tab_family (id, username, sex, 
+      age, del, date, flag, 
+      bz, eid, jobdate, birthday, 
+      empid)
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{sex,jdbcType=CHAR}, 
+      #{age,jdbcType=VARCHAR}, #{del,jdbcType=INTEGER}, #{date,jdbcType=TIMESTAMP}, #{flag,jdbcType=VARCHAR}, 
+      #{bz,jdbcType=VARCHAR}, #{eid,jdbcType=VARCHAR}, #{jobdate,jdbcType=VARCHAR}, #{birthday,jdbcType=VARCHAR}, 
+      #{empid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dd.domain.Family" >
+    insert into tab_family
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="age != null" >
+        age,
+      </if>
+      <if test="del != null" >
+        del,
+      </if>
+      <if test="date != null" >
+        date,
+      </if>
+      <if test="flag != null" >
+        flag,
+      </if>
+      <if test="bz != null" >
+        bz,
+      </if>
+      <if test="eid != null" >
+        eid,
+      </if>
+      <if test="jobdate != null" >
+        jobdate,
+      </if>
+      <if test="birthday != null" >
+        birthday,
+      </if>
+      <if test="empid != null" >
+        empid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=CHAR},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=VARCHAR},
+      </if>
+      <if test="del != null" >
+        #{del,jdbcType=INTEGER},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="bz != null" >
+        #{bz,jdbcType=VARCHAR},
+      </if>
+      <if test="eid != null" >
+        #{eid,jdbcType=VARCHAR},
+      </if>
+      <if test="jobdate != null" >
+        #{jobdate,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="empid != null" >
+        #{empid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dd.domain.Family" >
+    update tab_family
+    <set >
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=CHAR},
+      </if>
+      <if test="age != null" >
+        age = #{age,jdbcType=VARCHAR},
+      </if>
+      <if test="del != null" >
+        del = #{del,jdbcType=INTEGER},
+      </if>
+      <if test="date != null" >
+        date = #{date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flag != null" >
+        flag = #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="bz != null" >
+        bz = #{bz,jdbcType=VARCHAR},
+      </if>
+      <if test="eid != null" >
+        eid = #{eid,jdbcType=VARCHAR},
+      </if>
+      <if test="jobdate != null" >
+        jobdate = #{jobdate,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="empid != null" >
+        empid = #{empid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dd.domain.Family" >
+    update tab_family
+    set username = #{username,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=CHAR},
+      age = #{age,jdbcType=VARCHAR},
+      del = #{del,jdbcType=INTEGER},
+      date = #{date,jdbcType=TIMESTAMP},
+      flag = #{flag,jdbcType=VARCHAR},
+      bz = #{bz,jdbcType=VARCHAR},
+      eid = #{eid,jdbcType=VARCHAR},
+      jobdate = #{jobdate,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=VARCHAR},
+      empid = #{empid,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
